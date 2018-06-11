@@ -14,7 +14,14 @@
     <div class="container">
       <div class="columns">
         <div class="column is-four-fifths">
-
+          <div class="columns">
+            <div class="column is-one-third result-list" id="list01"></div>
+            <div class="column is-one-third"></div>
+            <div class="column is-one-third result-list" id="list02"></div>
+          </div>
+          <div class="columns">
+            <div class="column extra-list"></div>
+          </div>
         </div>
         <div class="column member-list">
           <label class="checkbox">
@@ -91,12 +98,34 @@
 
         $("#submitButton").click(function() {
           members.length =  0;
+          $(".result-list").empty();
+          $(".extra-list").empty();
+
           $('input:checkbox[name="memberName"]:checked').each(function() {
             members.push($(this).val());
           });
           members.sort(function() {
             return Math.random() - Math.random();
           });
+
+          if (members.length % 2 == 0) {
+            for(var i = 0; i < members.length; i++) {
+              if(i % 2 == 0){
+                $("#list01").append(`<div>${members[i]}</div>`);
+              } else {
+                $("#list02").append(`<div>${members[i]}</div>`);
+              }
+            }
+          } else {
+            for(var i=0; i < members.length - 1; i++) {
+              if(i % 2 == 0){
+                $("#list01").append(`<div>${members[i]}</div>`);
+              } else {
+                $("#list02").append(`<div>${members[i]}</div>`);
+              }
+            }
+            $(".extra-list").append(`<div>${members[members.length - 1]}</div>`);
+          }
         });
       });
     </script>
@@ -108,6 +137,11 @@
       }
       .member-list label {
         margin-bottom: 8px;
+      }
+
+      .result-list {
+        display: flex;
+        flex-direction: column;
       }
     </style>
   </body>
