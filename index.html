@@ -11,9 +11,104 @@
 
 </head>
   <body>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-four-fifths">
 
+        </div>
+        <div class="column member-list">
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="ちーず">
+            ちーず
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="つけぱん">
+            つけぱん
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="めい">
+            めい
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="ジェーニャ">
+            ジェーニャ
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="うぃる">
+            うぃる
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="ぽーる">
+            ぽーる
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="かじけん">
+            かじけん
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="ほおちゃん">
+            ほおちゃん
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="みるきー">
+            みるきー
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="パンジー">
+            パンジー
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="うーさー">
+            うーさー
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="ドムジャ">
+            ドムジャ
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="ソニョ">
+            ソニョ
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="ラグーン">
+            ラグーン
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="しゃくり">
+            しゃくり
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="memberName" value="とうひ">
+            とうひ
+          </label>
+          <button id="submitButton">シャッフル</button>
+        </div>
+      </div>
+    </div>
     <script>
-      
+      $(function(){
+        var members = [];
+
+        $("#submitButton").click(function() {
+          members.length =  0;
+          $('input:checkbox[name="memberName"]:checked').each(function() {
+            members.push($(this).val());
+          });
+          members.sort(function() {
+            return Math.random() - Math.random();
+          });
+        });
+      });
     </script>
+    <style>
+      .member-list {
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+      }
+      .member-list label {
+        margin-bottom: 8px;
+      }
+    </style>
   </body>
 </html>
